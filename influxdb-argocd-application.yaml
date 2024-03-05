@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: influxdb
+  name: influxdb2
   namespace: argocd # MUST be argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
