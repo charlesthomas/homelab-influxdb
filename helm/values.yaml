@@ -1,0 +1,62 @@
+image:
+  repository: influxdb
+  tag: 2.3.0-alpine
+  pullPolicy: IfNotPresent
+
+nameOverride: "influxdb2"
+fullnameOverride: ""
+
+startupProbe:
+  enabled: false
+
+adminUser:
+  organization: "influxdata"
+  bucket: "telegraf"
+  user: "admin"
+  retention_policy: "0s"
+  existingSecret: influxdb-auth
+
+persistence:
+  enabled: true
+  storageClass: "longhorn"
+  accessMode: ReadWriteOnce
+  size: 50Gi
+  mountPath: /var/lib/influxdb2
+  subPath: ""
+
+initScripts:
+  enabled: false
+  scripts:
+    init.sh: |+
+      #!/bin/bash
+      influx apply --force yes -u https://raw.githubusercontent.com/influxdata/community-templates/master/influxdb2_operational_monitoring/influxdb2_operational_monitoring.yml
+
+service:
+  type: ClusterIP
+  port: 8086
+  targetPort: 8086
+  portName: http
+
+serviceAccount:
+  create: true
+  name: influxdb2
+
+ingress:
+  enabled: true
+  className: nginx-internal
+  tls: true
+  hostname: influxdb.crt.house
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: influxdb.crt.house
+    gethomepage.dev/href: https://influxdb.crt.house
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Database Querier
+    gethomepage.dev/group: Kubernetes
+    gethomepage.dev/icon: influxdb
+    gethomepage.dev/name: InfluxDB
+    gethomepage.dev/pod-selector: ""
+  path: /
+
+pdb:
+  create: true
+  minAvailable: 1
