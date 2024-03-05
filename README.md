@@ -9,3 +9,4 @@ This repo is templated via
 [homelab-template](https://github.com/charlesthomas/homelab-template)
 and automatically updated via
 [🤖 Templatron](https://github.com/charlesthomas/templatron).
+
