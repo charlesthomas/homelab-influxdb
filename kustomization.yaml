@@ -8,7 +8,7 @@ commonAnnotations:
 
 resources:
 - resources/namespaces.yaml
-patches:
+- resources/ingresses.yaml
 helmCharts:
 - name: influxdb2
   namespace: influxdb2

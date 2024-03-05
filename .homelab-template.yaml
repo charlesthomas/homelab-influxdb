@@ -17,6 +17,7 @@ pvc: false
 reloader: true
 resources:
 - external-secrets.yaml
+- ingresses.yaml
 service: false
 serviceAccount: false
 upstreamURL: https://www.influxdata.com/products/influxdb/

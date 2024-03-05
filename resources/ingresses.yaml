@@ -1,0 +1,38 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: influxdb.crt.house
+    gethomepage.dev/description: "Database Querier"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Kubernetes
+    gethomepage.dev/href: https://influxdb.crt.house
+    gethomepage.dev/icon: influxdb
+    gethomepage.dev/name: InfluxDB
+    gethomepage.dev/pod-selector: ""
+    repo: https://github.com/charlesthomas/homelab-influxdb
+  labels:
+    app.kubernetes.io/instance: influxdb2
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: influxdb2
+    app.kubernetes.io/version: 2.7.4
+    helm.sh/chart: influxdb2-2.1.2
+  name: influxdb2
+  namespace: influxdb2
+spec:
+  ingressClassName: nginx-internal
+  rules:
+    - host: influxdb.crt.house
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: influxdb2
+                port:
+                  name: http
+  tls:
+    - hosts:
+      - influxdb.crt.house
