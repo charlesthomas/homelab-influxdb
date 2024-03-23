@@ -1,4 +1,4 @@
-_commit: v1.6.18
+_commit: v1.8.2
 _src_path: /home/crthomas/code/charlesthomas/homelab-template
 additionalResources: ''
 backups: false
@@ -9,6 +9,7 @@ helmRelease: influxdb2
 helmRepo: https://helm.influxdata.com/
 helmValues: helm/values.yaml
 helmVersion: ''
+homepageEnabled: false
 ingress: false
 labels: ''
 name: influxdb
