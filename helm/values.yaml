@@ -13,7 +13,7 @@ adminUser:
   organization: "influxdata"
   bucket: "telegraf"
   user: "admin"
-  retention_policy: "0s"
+  retention_policy: "30d"
   existingSecret: influxdb-auth
 
 persistence:
