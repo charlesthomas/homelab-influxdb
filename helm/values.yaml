@@ -45,5 +45,4 @@ ingress:
   enabled: false
 
 pdb:
-  create: true
-  minAvailable: 1
+  create: false
