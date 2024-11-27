@@ -19,7 +19,7 @@ adminUser:
 persistence:
   enabled: true
   storageClass: "longhorn"
-  accessMode: ReadWriteOnce
+  accessMode: ReadWriteMany
   size: 50Gi
   mountPath: /var/lib/influxdb2
   subPath: ""
