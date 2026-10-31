@@ -16,3 +16,11 @@ helmCharts:
   releaseName: influxdb2
   repo: https://helm.influxdata.com/
   valuesFile: helm/values.yaml
+configMapGenerator:
+- name: grafana-dashboard-influxdb
+  files:
+  - grafana/influxdb.json
+  options:
+    disableNameSuffixHash: true
+    labels:
+      grafana_dashboard: "1"
