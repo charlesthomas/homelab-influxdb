@@ -16,6 +16,7 @@ helmCharts:
   releaseName: influxdb2
   repo: https://helm.influxdata.com/
   valuesFile: helm/values.yaml
+  version: 2.1.2
 configMapGenerator:
 - name: grafana-dashboard-influxdb
   files:
